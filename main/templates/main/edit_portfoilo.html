@@ -1,0 +1,23 @@
+{% extends  "main/base.html"}
+{% block title %} افزودن نمونه‌کارها{% block title %}
+
+{% block content %}
+
+<div class="container mt-5">
+
+    <h2 class="mb-4 text-center">{% if form.instance.pk %}ویرایش{% endif %}نمونه‌کارها</h2>
+
+    {% if success %}
+    <div class="alert alert-success  text-center">نمونه کار با موفقیت ارسال شد</div>
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" class="mx-auto" style="max-width: 600px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success w-100">
+            {% if form.instance.pk %}ثبت تغییرات{% else %}ثبت نمونه‌کارها{% endif %}
+
+        </button>
+    </form>
+    {% endblock %}
+</div>
