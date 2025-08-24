@@ -1,0 +1,47 @@
+{% extends "main/base.html" %}
+
+{% block title %}تماس با من{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4 text-center">تماس با من</h2>
+
+    {% if success %}
+    <div class="alert alert-success text-center">
+        پیام شما با موفقیت ارسال شد.
+    </div>
+    {% endif %}
+
+    <form method="post" class="mx-auto" style="max-width: 600px;">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div class="mb-3">
+            {{ form.name.label_tag }}
+            {{ form.name }}
+            {% for error in form.name.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.email.label_tag }}
+            {{ form.email }}
+            {% for error in form.email.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div class="mb-3">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+            {% for error in form.message.errors %}
+                <div class="text-danger">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="btn btn-success w-100">ارسال پیام</button>
+    </form>
+</div>
+{% endblock %}

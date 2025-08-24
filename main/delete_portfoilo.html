@@ -1,0 +1,17 @@
+{% extends "main/base.html" %}
+
+{% block title %}حذف نمونه کار{% endblock %}
+
+{% block center %}
+
+<div class=" container mt-5 text-center">
+    <h3>آیا مطوِن هستید میخواهید{{self.title}}این نمونه کار را حدف کنید؟</h3>
+
+    <form method="post" >
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger mt-3">حذف نهایی</button>
+
+        <a href="{% url 'portfoilo' %}" class="btn btn-secondary mt-3">انصراف</a>
+    </form>
+</div>
+{% endblock %}
